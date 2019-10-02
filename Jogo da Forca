@@ -1,0 +1,162 @@
+palavra_oculta = ["M","E","L","A","N","C","I","A"] #AQUI O PROGRAMADOR DEFINE A PALAVRA EM UMA LISTA DE STRING
+tema= "FRUTA"
+letras_descobertas = [] #AQUI UMA LISTA VAZIA E CRIADA
+palavra_inicio = len(palavra_oculta);
+letras_usadas=""
+boneco = 0 #VARIAVEL RESPONSAVEL PELO ESTADO DO BONECO
+correta = "" #VARIEVEL RESPONSAVEL POR ARMAZENAR A PALAVRA EM UMA UNICA STRING, INICIALMENTE VAZIA
+parte = "" #VARIAVEL REPONSAVEL POR ARAMZENAR AS LETRAS DESCOBERTAS EM UMA UNICA STRING, INICIALMENTE VAZIA
+parte2 = "" #VARIAVEL RESPONSAVEL POR ARMAZENAR OS CARACTERES A SEREM ELIMINADOS DA VARIAVEL parte, INICIALMENTE VAZIA
+
+#a função para ser executada precisa se chamada em alguma parte do cóodigo
+def limpar():#FUNÇÃO RESPONSAVEL POR LIMPAR A TELA EM 30 LINHAS E REEXIBIR O CABEÇALHO.
+    for i in range(0, 30): #ENQUANTO A VARIAVEL i FOR MENOR IGUAL A 30 O BLOCO DE CODICOS ABAIXO SERÁ EXECUTADO.
+        print("") #IMPRIMIRÁ UMA LINHA VAZIA.
+    #CABEÇALHO
+    print("\n---------- JOGO DA FORCA ----------")
+    print("")
+    print("O TEMA É: ",tema)
+    print("")
+    print("A PALAVRA POSSUI ", len(palavra_oculta), " LETRAS")#SERÁ IMPRESSO O NUMERO DE LETRAS DA PALAVRA.
+    print(" ")
+
+def enforcar(boneco , correta): #FUNÇÃO QUE ATUALIZA O ESTADO DO BONECO, RECEBENDO OS PARAMETROS DA VARIAVEL boneco e correta
+    if boneco == 0: #CASO A VARIAVEL BONECO SEJA IGUAL A 0 SERÁ MOSTRADO NA TELA APENAS A FORCA
+        print("")
+        print("           _______")
+        print("          |       |")
+        print("          |       ")
+        print("          |")
+        print("          |")
+        print("          |")
+        print("          |")
+        print("")
+    if boneco == 1: #CASO A VARIAVEL BONECO SEJA IGUAL A 1 SERÁ MOSTRADO NA TELA A CABEÇA DO BONECO
+        print("")
+        print("           _______")
+        print("          |       |")
+        print("          |       O")
+        print("          |")
+        print("          |")
+        print("          |")
+        print("          |")
+        print("")
+    if boneco == 2:#CASO A VARIAVEL BONECO SEJA IGUAL A 2 SERÁ MOSTRADO NA TELA A CABEÇA E O TRONCO DO BONECO
+        print("")
+        print("           _______")
+        print("          |       |")
+        print("          |       O")
+        print("          |       |")
+        print("          |       |")
+        print("          |")
+        print("          |")
+        print("")
+    if boneco == 3:#CASO A VARIAVEL BONECO SEJA IGUAL A 3 SERÁ MOSTRADO NA TELA A CABEÇA, TRONCO E O PRIMEIRO BRAÇO DO BONECO
+        print("")
+        print("           _______")
+        print("          |       |")
+        print("          |       O")
+        print("          |      /|")
+        print("          |       |")
+        print("          |")
+        print("          |")
+        print("")
+    if boneco == 4:#CASO A VARIAVEL BONECO SEJA IGUAL A 3 SERÁ MOSTRADO NA TELA A CABEÇA, TRONCO E OS DOIS BRAÇOS DO BONECO
+        print("")
+        print("           _______")
+        print("          |       |")
+        print("          |       O")
+        print("          |      /|\ ")
+        print("          |       |")
+        print("          |")
+        print("          |")
+        print("")
+    if boneco == 5:#CASO A VARIAVEL BONECO SEJA IGUAL A 3 SERÁ MOSTRADO NA TELA A CABEÇA, TRONCO, DOIS BRAÇOS E A PRIMEIRA PERNA DO BONECO
+        print("")
+        print("           _______")
+        print("          |       |")
+        print("          |       O")
+        print("          |      /|\ ")
+        print("          |       |")
+        print("          |      /")
+        print("          |")
+        print("")
+    if boneco == 6:#CASO A VARIAVEL BONECO SEJA IGUAL A 3 SERÁ MOSTRADO NA TELA A CABEÇA, TRONCO, DOIS BRAÇOS E AS DUAS PERNAS DO BONECO
+        print("")
+        print("           _______")
+        print("          |       |")
+        print("          |       O")
+        print("          |      /|\ ")
+        print("          |       |")
+        print("          |      / \ ")
+        print("          |")
+        print("")
+        print("        VOCÊ PERDEU!!!") #SERÁ EXIBIDO NA TELA QUE O USUARIO PERDEU
+        print("A PALAVRA CORRETA ERA:", correta) #SERÁ EXIBIDO NA TELA A PALAVRA CORRETA
+        exit() #METODO QUE ENCERRA A APLICAÇÃO
+#CABEÇALHO
+print("\n---------- JOGO DA FORCA ----------")
+print("")
+print("O TEMA É: ",tema)
+print("")
+
+for i in range(0, len(palavra_oculta)): #ESTRUTURA DE REPETIÇÃO RESPONSAVEL POR PERCORRER A LISTA palavra_oculta
+#TABELINHA
+    correta += palavra_oculta[i] #A VARIAVEL correta RECEBERÁ AQUI A PALAVRA DEFINIDA PELO PROGRAMADOR, LETRA POR LETRA
+    letras_descobertas.append("_") #A VARIAVEL letras_descobertas VAI RECEBER UM TRAÇO EM CADA POSIÇÃO DA LISTA
+
+acertou = False #A VARIAVEL acertou INICIA COM O VALOR FALSE
+print("A PALAVRA POSSUI ", len(palavra_oculta)," LETRAS") #SERÁ IMPRESSO O NUMERO DE LETRAS DA PALAVRA.
+print(" ")
+p="" #A VARIAVEL p É INICIALMENTE UMA STRING VAZIA.
+for i in range(0, len(palavra_oculta)):#A VARIAVEL i INICIA COM VALOR ZERO E A CADA LOOP ELA SERÁ TESTADO SE ELA É IGUAL AO NUMERO DE LETRAS EM palavra_oculta ENQUANTO NÃO, O LOOP CONTINUA.
+
+    parte = str(letras_descobertas)#parte VAI RECEBER O VETOR CONVERTIDO PARA STRING.
+
+    parte2 = "[',] " #parte2 VAI RECEBER OS CARACTERES [',].
+    #print (letras_descobertas)#parte para mostrar oq parte armazena
+    for p in range(0, len(parte2)):#A ESTRUTURA DE REPETIÇÃO SERÁ REPETIDA ATÉ A VARIAVEL p ALCANÇAR O TAMANHO DA VARIAVEL parte2
+        parte = parte.replace(parte2[p], " ") #A VARIAVEL parte VAI RECEBER ELA MESMA EXCLUINDO OS CARACTERES DA VARIAVEL parte2 o replace SERVE PARA ISSO
+print(parte)#parte SERÁ IMPRESSO NA TELA
+#A FORCA INICIA VAZIA.
+print("           _______")
+print("          |       |")
+print("          |       ")
+print("          |")
+print("          |")
+print("          |")
+print("          |")
+print("")
+while acertou == False : #ESTRUTURA DE REPETIÇÃO RESPONSAVEL POR EXECUTAR O BLOCO DE CODIGO ABAIXO ENQUANTO A VARIAVEL acertou for igual a FALSE
+    letra = str(input("DIGITE UMA LETRA: "))#O USUARIO DIGITA A LETRA E O VALOR E ATRIBUIDO A VARIAVEL letra
+    limpar() #SERÁ CHAMADA A FUNÇÃO LIMPAR
+    letras_usadas += letra #A VARIAVEL letras_usadas RECEBERÁ A NOVA LETRA DIGITADA DE FORMA ACUMULATIVA.
+    print("LETRAS USADAS!") #SERÁ IMPRESSO LETRAS USADAS!
+    print(" ",letras_usadas)#E AS LETRAS
+    print("")
+    if letra in palavra_oculta: #SE A LETRA DIGITADA ESTIVER DENTRO DA LISTA palavra_oculta O BLOCO ABAIXO SERÁ EXECUTADO
+        print("MUITO BEM!") #SERÁ MOSTRADO NA TELA MUITO BEM
+    else : #SE A LETRA NÃO FOR ENCONTRADA NA LISTA O BLOCO DE CODIGO ABAIXO SERÁ EXECUTADO
+        boneco = boneco + 1 #A VARIAVEL BONECO RECEBERÁ MAIS 1
+        print("VÁ COM CALMA!!!") #E SERÁ IMPRESSO NA TELA VA COM CALMA.
+        print("")
+
+    for i in range(0, len(palavra_oculta)) : #A VARIAVEL i INICIA COM VALOR ZERO E A CADA LOOP ELA SERÁ TESTADO SE ELA É IGUAL AO NUMERO DE LETRAS EM palavra_oculta ENQUANTO NÃO, O LOOP CONTINUA.
+        if letra == palavra_oculta[i] : #SE A VARIAVEL letra FOR IGUAL A LETRA DA LISTA palavra oculta NA POSIÇÃO DE i O BLOCO ABAIXO SERÁ EXECUTADO.
+            letras_descobertas[i] = letra #A LISTA letras descbertas NA POSIÇÃO i VAI RECEBER A VARIAVEL letra.
+        parte = str(letras_descobertas) #parte VAI RECEBER O VETOR CONVERTIDO PARA STRING.
+        parte2 = "[',]" #parte2 VAI RECEBER OS CARACTERES [',].
+        for p in range(0,len(parte2)) : #A ESTRUTURA DE REPETIÇÃO SERÁ REPETIDA ATÉ A VARIAVEL p ALCANÇAR O TAMANHO DA VARIAVEL parte2
+            parte = parte.replace(parte2[p]," ") #A VARIAVEL parte VAI RECEBER ELE MESMA EXCLUINDO OS CARACTERES DA VARIAVEL parte2 o replace SERVE PARA ISSO
+
+    print(parte) #parte SERÁ IMPRESSO NA TELA
+    acertou = True #A VARIAVEL acertou RECEBE O VALOR True
+    for i in range(0, len(letras_descobertas)) : #A ESTRUTURA DE REPETIÇÃO SERÁ REPETIDA ATÉ A VARIAVEL x ALCANÇAR O TAMANHO DA LISTA letras_descobertas.
+        if letras_descobertas[i] == "_" : #CASO A VARIAVEL letras_descobertas NA POSIÇÃO x SEJA IGUAL A - O BLOCO ABAIXO SERÁ EXECUTADO.
+
+            acertou = False #A VARIAVEL acertou RECEBE True
+
+
+    enforcar(boneco, correta) #aqui a função enforcar é chamda com o objetivo de atualizar o estado do boneco
+
+print("PARABÉNS VOCÊ ACERTOU A PALAVRA!!!") #caso o usuario chegue ao fim sem ser enforcado essa mensagem será exibida
