@@ -1,10 +1,10 @@
 palavra_oculta = ["M","E","L","A","N","C","I","A"] #AQUI O PROGRAMADOR DEFINE A PALAVRA EM UMA LISTA DE STRING
 tema= "FRUTA"
 letras_descobertas = [] #AQUI UMA LISTA VAZIA E CRIADA
-palavra_inicio = len(palavra_oculta);
+tamanho_palavra = len(palavra_oculta);
 letras_usadas=""
 boneco = 0 #VARIAVEL RESPONSAVEL PELO ESTADO DO BONECO
-correta = "" #VARIEVEL RESPONSAVEL POR ARMAZENAR A PALAVRA EM UMA UNICA STRING, INICIALMENTE VAZIA
+palavra_correta = "" #VARIEVEL RESPONSAVEL POR ARMAZENAR A PALAVRA EM UMA UNICA STRING, INICIALMENTE VAZIA
 parte = "" #VARIAVEL REPONSAVEL POR ARAMZENAR AS LETRAS DESCOBERTAS EM UMA UNICA STRING, INICIALMENTE VAZIA
 parte2 = "" #VARIAVEL RESPONSAVEL POR ARMAZENAR OS CARACTERES A SEREM ELIMINADOS DA VARIAVEL parte, INICIALMENTE VAZIA
 
@@ -17,10 +17,10 @@ def limpar():#FUNÇÃO RESPONSAVEL POR LIMPAR A TELA EM 30 LINHAS E REEXIBIR O C
     print("")
     print("O TEMA É: ",tema)
     print("")
-    print("A PALAVRA POSSUI ", len(palavra_oculta), " LETRAS")#SERÁ IMPRESSO O NUMERO DE LETRAS DA PALAVRA.
+    print("A PALAVRA POSSUI ", tamanho_palavra, " LETRAS")#SERÁ IMPRESSO O NUMERO DE LETRAS DA PALAVRA.
     print(" ")
 
-def enforcar(boneco , correta): #FUNÇÃO QUE ATUALIZA O ESTADO DO BONECO, RECEBENDO OS PARAMETROS DA VARIAVEL boneco e correta
+def enforcar(boneco , palavra_correta): #FUNÇÃO QUE ATUALIZA O ESTADO DO BONECO, RECEBENDO OS PARAMETROS DA VARIAVEL boneco e correta
     if boneco == 0: #CASO A VARIAVEL BONECO SEJA IGUAL A 0 SERÁ MOSTRADO NA TELA APENAS A FORCA
         print("")
         print("           _______")
@@ -92,7 +92,7 @@ def enforcar(boneco , correta): #FUNÇÃO QUE ATUALIZA O ESTADO DO BONECO, RECEB
         print("          |")
         print("")
         print("        VOCÊ PERDEU!!!") #SERÁ EXIBIDO NA TELA QUE O USUARIO PERDEU
-        print("A PALAVRA CORRETA ERA:", correta) #SERÁ EXIBIDO NA TELA A PALAVRA CORRETA
+        print("A PALAVRA CORRETA ERA:", palavra_correta) #SERÁ EXIBIDO NA TELA A PALAVRA CORRETA
         exit() #METODO QUE ENCERRA A APLICAÇÃO
 #CABEÇALHO
 print("\n---------- JOGO DA FORCA ----------")
@@ -100,17 +100,17 @@ print("")
 print("O TEMA É: ",tema)
 print("")
 
-for i in range(0, len(palavra_oculta)): #ESTRUTURA DE REPETIÇÃO RESPONSAVEL POR PERCORRER A LISTA palavra_oculta
+for i in range(0, len(palavra_oculta)): #ESTRUTURA DE REPETIÇÃO RESPONSAVEL POR PERCORRER O VETOR palavra_oculta
 #TABELINHA
-    correta += palavra_oculta[i] #A VARIAVEL correta RECEBERÁ AQUI A PALAVRA DEFINIDA PELO PROGRAMADOR, LETRA POR LETRA
+    palavra_correta += palavra_oculta[i] #A VARIAVEL correta RECEBERÁ AQUI A PALAVRA DEFINIDA PELO PROGRAMADOR, LETRA POR LETRA
     letras_descobertas.append("_") #A VARIAVEL letras_descobertas VAI RECEBER UM TRAÇO EM CADA POSIÇÃO DA LISTA
 
-acertou = False #A VARIAVEL acertou INICIA COM O VALOR FALSE
-print("A PALAVRA POSSUI ", len(palavra_oculta)," LETRAS") #SERÁ IMPRESSO O NUMERO DE LETRAS DA PALAVRA.
+acertou = False #A VARIAVEL acertou INICIA COM O VALOR FALSE pq o jogo ta começando e ainda o usuario n ganhou
+print("A PALAVRA POSSUI ",tamanho_palavra," LETRAS") #SERÁ IMPRESSO O NUMERO DE LETRAS DA PALAVRA.
 print(" ")
-p="" #A VARIAVEL p É INICIALMENTE UMA STRING VAZIA.
-for i in range(0, len(palavra_oculta)):#A VARIAVEL i INICIA COM VALOR ZERO E A CADA LOOP ELA SERÁ TESTADO SE ELA É IGUAL AO NUMERO DE LETRAS EM palavra_oculta ENQUANTO NÃO, O LOOP CONTINUA.
 
+for i in range(0, len(palavra_oculta)):#A VARIAVEL i INICIA COM VALOR ZERO E A CADA LOOP ELA SERÁ TESTADO SE ELA É IGUAL AO NUMERO DE LETRAS EM palavra_oculta ENQUANTO NÃO, O LOOP CONTINUA.
+    #USAMOS ESSA PARTE DO CÓDIGO PARA ORGANIZAR A FORMA EM QUE OS TRAÇOS ERAM MOSTRADOS, ANTES ERA NA VETICAL E AGR É MOSTRADO NA HORIZONTAL
     parte = str(letras_descobertas)#parte VAI RECEBER O VETOR CONVERTIDO PARA STRING.
 
     parte2 = "[',] " #parte2 VAI RECEBER OS CARACTERES [',].
@@ -127,6 +127,7 @@ print("          |")
 print("          |")
 print("          |")
 print("")
+
 while acertou == False : #ESTRUTURA DE REPETIÇÃO RESPONSAVEL POR EXECUTAR O BLOCO DE CODIGO ABAIXO ENQUANTO A VARIAVEL acertou for igual a FALSE
     letra = str(input("DIGITE UMA LETRA: "))#O USUARIO DIGITA A LETRA E O VALOR E ATRIBUIDO A VARIAVEL letra
     limpar() #SERÁ CHAMADA A FUNÇÃO LIMPAR
@@ -152,11 +153,11 @@ while acertou == False : #ESTRUTURA DE REPETIÇÃO RESPONSAVEL POR EXECUTAR O BL
     print(parte) #parte SERÁ IMPRESSO NA TELA
     acertou = True #A VARIAVEL acertou RECEBE O VALOR True
     for i in range(0, len(letras_descobertas)) : #A ESTRUTURA DE REPETIÇÃO SERÁ REPETIDA ATÉ A VARIAVEL x ALCANÇAR O TAMANHO DA LISTA letras_descobertas.
-        if letras_descobertas[i] == "_" : #CASO A VARIAVEL letras_descobertas NA POSIÇÃO x SEJA IGUAL A - O BLOCO ABAIXO SERÁ EXECUTADO.
+        if letras_descobertas[i] == "_" : #CASO A VARIAVEL letras_descobertas NA POSIÇÃO I SEJA IGUAL A - O BLOCO ABAIXO SERÁ EXECUTADO.
 
             acertou = False #A VARIAVEL acertou RECEBE True
 
 
-    enforcar(boneco, correta) #aqui a função enforcar é chamda com o objetivo de atualizar o estado do boneco
+    enforcar(boneco, palavra_correta) #aqui a função enforcar é chamda com o objetivo de atualizar o estado do boneco
 
 print("PARABÉNS VOCÊ ACERTOU A PALAVRA!!!") #caso o usuario chegue ao fim sem ser enforcado essa mensagem será exibida
