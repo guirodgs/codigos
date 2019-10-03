@@ -1,4 +1,4 @@
-palavra_oculta = ["M","E","L","A","N","C","I","A"] #AQUI O PROGRAMADOR DEFINE A PALAVRA EM UMA LISTA DE STRING
+palavra_oculta = ["M","E","L","A","N","C","I","A"] #AQUI O PROGRAMADOR DEFINE A PALAVRA EM UM VETOR DE STRING
 tema= "FRUTA"
 letras_descobertas = [] #AQUI UMA LISTA VAZIA E CRIADA
 tamanho_palavra = len(palavra_oculta);
