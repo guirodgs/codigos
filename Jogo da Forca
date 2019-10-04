@@ -111,10 +111,7 @@ def enforcar(boneco , palavra_correta): #FUNÇÃO QUE ATUALIZA O ESTADO DO BONEC
         print("        VOCÊ PERDEU!!!") #SERÁ EXIBIDO NA TELA QUE O USUARIO PERDEU
         print("A PALAVRA CORRETA ERA:", palavra_correta) #SERÁ EXIBIDO NA TELA A PALAVRA CORRETA
         exit() #METODO QUE ENCERRA A APLICAÇÃO
-    print("")
-    print("")
-    print("")
-    print("")    
+     
         
 #CABEÇALHO
 limpar()
@@ -151,21 +148,18 @@ while acertou == False : #ESTRUTURA DE REPETIÇÃO RESPONSAVEL POR EXECUTAR O BL
     letra = str(input("DIGITE UMA LETRA: "))#O USUARIO DIGITA A LETRA E O VALOR E ATRIBUIDO A VARIAVEL letra  
     letras_usadas += letra #A VARIAVEL letras_usadas RECEBERÁ A NOVA LETRA DIGITADA DE FORMA ACUMULATIVA.
     limpar()#A FUNÇÃO LIMPAR E CHAMADA PARA ORGANIZAR O CODIGO
-    print("LETRAS USADAS!") #SERÁ IMPRESSO LETRAS USADAS!
-    print(" ",letras_usadas)#E AS LETRAS
+    print("LETRAS USADAS:",letras_usadas) #SERÁ IMPRESSO LETRAS USADAS!    
     print("")
     
     if letra in palavra_oculta: #SE A LETRA DIGITADA ESTIVER DENTRO DA LISTA palavra_oculta O BLOCO ABAIXO SERÁ EXECUTADO
     
         print("MUITO BEM!") #SERÁ MOSTRADO NA TELA MUITO BEM
+        print("")
         
     else : #SE A LETRA NÃO FOR ENCONTRADA NA LISTA O BLOCO DE CODIGO ABAIXO SERÁ EXECUTADO
-        
-        boneco = boneco + 1 #A VARIAVEL BONECO RECEBERÁ MAIS 1
         print("VÁ COM CALMA!!!") #E SERÁ IMPRESSO NA TELA VA COM CALMA.
         print("")
-
-
+        boneco = boneco + 1 #A VARIAVEL BONECO RECEBERÁ MAIS 1        
 
     for i in range(0, len(palavra_oculta)) : #A VARIAVEL i INICIA COM VALOR ZERO E A CADA LOOP ELA SERÁ TESTADO SE ELA É IGUAL AO NUMERO DE LETRAS EM palavra_oculta ENQUANTO NÃO, O LOOP CONTINUA.
         
