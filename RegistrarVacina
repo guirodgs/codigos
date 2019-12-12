@@ -1,0 +1,43 @@
+//codigo do metodo de registro da vacina passada como objeto atraves da interface grafica.
+ public void registrarVacina(Vacina v){
+        //AQUI SERIA O CODIGO PARA O REGISTRO DA VACINA PASSADA COMO OBJETO NO BANCO DE DADOS.
+        
+    }
+    
+//codigo do botão do form para especificar a vacina que foi tomada atraves de radio butons pelo usuario.
+ VacinaDAO v1 = new VacinaDAO();
+        Vacina v2 = new Vacina();
+        
+        if(b1.isSelected()){
+            v2.setNome("BCG");
+            v2.setCodigo(1);
+            v1.registrarVacina(v2);
+        }
+        if(b2.isSelected()){
+            v2.setNome("Febre Amarela");
+            v2.setCodigo(2);
+            v1.registrarVacina(v2);
+        }
+        if(b3.isSelected()){
+            v2.setNome("Hepatite B");
+            v2.setCodigo(3);
+            v1.registrarVacina(v2);
+        }
+        if(b2.isSelected()){
+            v2.setNome("VIP");
+            v2.setCodigo(4);
+            v1.registrarVacina(v2);
+        }
+        if(b2.isSelected()){
+            v2.setNome("HPV");
+            v2.setCodigo(5);
+            v1.registrarVacina(v2);
+        }       
+                
+        if(b1.isSelected() || b2.isSelected() || b3.isSelected()  || b4.isSelected() || b5.isSelected()){
+            buttonGroup1.clearSelection();
+            not.setText("Vacina Registrada com sucesso.");
+        }else{
+            
+            not.setText("Selecione uma das vacinas para registrar.");
+        }
